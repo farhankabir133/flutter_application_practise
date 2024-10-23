@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-
 void main(){
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     title: "Awesome App",
-    home: HomePage(),
+    home: const HomePage(),
+    theme: ThemeData(
+      primarySwatch: Colors.purple,
+    ),
   ));
 }
 
@@ -17,40 +19,54 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Awesome App"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Align(
-          alignment: Alignment.bottomRight,
-          child: Container(
-            color: Colors.black,
-            width: 200,
-            height: 400,
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    width: 100,
-                    height: 100,
-                    color: Colors.green,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    width: 100,
-                    height: 100,
-                    color: Colors.yellow,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    width: 100,
-                    height: 100,
-                    color: Colors.blue,
-                  ),
-                ]
-              ),
-          ),
+      body: Container(),
+      drawer: Drawer(
+        child: ListView(
+          children: const [
+            // DrawerHeader(
+            //   decoration: BoxDecoration(color: Colors.purpleAccent),
+            //   child: Text(
+            //     "Hi, I'm a drawer",
+            //     style: TextStyle(color: Colors.red),
+            //     ),
+            // ),
+            UserAccountsDrawerHeader(
+              accountName: Text("Farhan Kabir"), 
+              accountEmail: Text("farhankabir133@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage("assets/profile_picture.png"),
+               ),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Account"),
+              subtitle: Text("Personal"),
+              trailing: Icon(Icons.edit),
+            ),
+             ListTile(
+              leading: Icon(Icons.email),
+              title: Text("Email"),
+              subtitle: Text("farhankabir133@gmail.com"),
+              trailing: Icon(Icons.send),
+            ),
+             ListTile(
+              leading: Icon(Icons.message),
+              title: Text("Messagel"),
+              subtitle: Text("farhankabir133@gmail.com"),
+              trailing: Icon(Icons.send),
+            ),
+             ListTile(
+              leading: Icon(Icons.contact_emergency),
+              title: Text("Contact"),
+              subtitle: Text("farhankabir133@gmail.com"),
+              trailing: Icon(Icons.send),
+            )
+          ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.edit),
       ),
     );
   }
